@@ -1,0 +1,9 @@
+{
+  "name": "code-challenge-entria",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Wellers0n/code-challenge-entria.git",
+  "author": "Wellerson <wellerson.developer@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
