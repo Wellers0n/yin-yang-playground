@@ -1,9 +1,41 @@
 {
-  "name": "code-challenge-entria",
+  "name": "@challenge/fullstack",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/Wellers0n/code-challenge-entria.git",
   "author": "Wellerson <wellerson.developer@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "start": "yarn start:server & yarn start:web",
+    "start:web": "yarn workspace @challenge/web run start",
+    "start:server": "yarn workspace @challenge/server run start"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote true --trailing-comma all --print-width 100",
+      "yarn jest:lint --passWithNoTests",
+      "git add"
+    ],
+    "*.ts": [
+      "prettier --write --single-quote true --trailing-comma all --print-width 100",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.tsx": [
+      "prettier --write --single-quote true --trailing-comma all --print-width 100",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.yml": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "pre-commit": "lint-staged",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
 }

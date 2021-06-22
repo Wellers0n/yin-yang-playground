@@ -1,0 +1,84 @@
+Arguments: 
+  /Users/wellerson/.nvm/versions/node/v12.21.0/bin/node /opt/homebrew/bin/yarn
+
+PATH: 
+  /opt/apache-maven-3.6.3/bin:/Users/wellerson/.nvm/versions/node/v12.21.0/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/apache-maven-3.6.3/bin:/Users/wellerson/.nvm/versions/node/v12.21.0/bin:/opt/homebrew/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  12.21.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  SyntaxError: /Users/wellerson/Projects/open-source/code-challenge-entria/packages/server/package.json: Unexpected token } in JSON at position 2094
+      at JSON.parse (<anonymous>)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "@challenge/server",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "private": true,
+    "devDependencies": {
+      "@babel/cli": "^7.14.5",
+      "@babel/core": "^7.14.6",
+      "@babel/node": "^7.14.7",
+      "@babel/plugin-proposal-class-properties": "^7.14.5",
+      "@babel/plugin-proposal-decorators": "^7.14.5",
+      "@babel/plugin-proposal-do-expressions": "^7.14.5",
+      "@babel/plugin-proposal-export-default-from": "^7.14.5",
+      "@babel/plugin-proposal-export-namespace-from": "^7.14.5",
+      "@babel/plugin-proposal-function-bind": "^7.14.5",
+      "@babel/plugin-proposal-function-sent": "^7.14.5",
+      "@babel/plugin-proposal-json-strings": "^7.14.5",
+      "@babel/plugin-proposal-logical-assignment-operators": "^7.14.5",
+      "@babel/plugin-proposal-nullish-coalescing-operator": "^7.14.5",
+      "@babel/plugin-proposal-numeric-separator": "^7.14.5",
+      "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
+      "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+      "@babel/plugin-proposal-pipeline-operator": "^7.14.5",
+      "@babel/plugin-proposal-throw-expressions": "^7.14.5",
+      "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+      "@babel/plugin-syntax-import-meta": "^7.10.4",
+      "@babel/plugin-transform-async-to-generator": "^7.14.5",
+      "@babel/preset-env": "^7.14.7",
+      "@babel/preset-typescript": "^7.14.5",
+      "@types/jest": "^26.0.23",
+      "@types/kcors": "^2.2.3",
+      "@types/koa": "^2.13.3",
+      "@types/koa-bodyparser": "^4.3.1",
+      "@types/koa-json": "^2.0.18",
+      "@types/koa-logger": "^3.1.1",
+      "@types/koa-router": "^7.4.2",
+      "babel-eslint": "^10.1.0",
+      "eslint": "^7.29.0",
+      "eslint-config-airbnb-base": "^14.2.1",
+      "eslint-import-resolver-typescript": "^2.4.0",
+      "eslint-plugin-import": "^2.23.4",
+      "get-graphql-schema": "^2.1.2",
+      "jest": "^27.0.4",
+      "jest-fetch-mock": "^3.0.3",
+      "jest-junit": "^12.2.0",
+      "jest-runner-eslint": "^0.10.1",
+      "nodemon": "^2.0.7",
+      "ts-jest": "^27.0.3",
+      "ts-node": "^10.0.0",
+      "typescript": "^4.3.4",
+      "typescript-eslint-parser": "^22.0.0"
+    },
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
