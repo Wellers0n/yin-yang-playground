@@ -9,7 +9,7 @@ import {
 import UserType from "../modules/main/UserType";
 
 // models
-import articleModel from "../models/User";
+import userModel from "../models/User";
 
 export default new GraphQLObjectType({
   name: "QueryType",
@@ -23,7 +23,7 @@ export default new GraphQLObjectType({
         },
       },
       resolve: (parentValue, args, ctx) => {
-        return articleModel.findOne({ _id: args.id });
+        return userModel.findOne({ _id: args.id });
       },
     },
     users: {
@@ -40,7 +40,7 @@ export default new GraphQLObjectType({
         // const idUser = ctx.user.id;
         const limit = args.limit;
         const skip = Math.max(0, args.skip);
-        return articleModel.find({}).limit(limit).skip(skip);
+        return userModel.find({}).limit(limit).skip(skip);
       },
     },
   }),

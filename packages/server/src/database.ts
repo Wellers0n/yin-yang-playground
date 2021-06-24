@@ -9,7 +9,7 @@ export default function connectDatabase() {
       .once("open", () => resolve(mongoose.connections[0]));
 
     mongoose.connect(
-      "mongodb+srv://Wellerson:0000@cluster0-0bwqz.mongodb.net/blog?retryWrites=true&w=majority",
+      "mongodb+srv://wellerson:mongodb@ying-yang.71q1u.mongodb.net/database?retryWrites=true&w=majority",
       {
         useNewUrlParser: true,
         useCreateIndex: true,

@@ -13,7 +13,7 @@ import app from "./app";
   const server = createServer(app.callback());
   server.listen(5000, () => {
     console.log(
-      `SERVER ON: http://localhost:${process.env.PORT || 5000}/grahql`
+      `SERVER ON: http://localhost:${process.env.PORT || 5000}/graphql`
     );
   });
 })();
