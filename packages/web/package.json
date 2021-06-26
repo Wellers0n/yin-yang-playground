@@ -1,8 +1,0 @@
-{
-  "name": "@challenge/web",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "wellerson",
-  "license": "MIT",
-  "private": true
-}
