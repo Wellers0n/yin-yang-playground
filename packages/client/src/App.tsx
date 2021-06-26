@@ -1,20 +1,21 @@
-import React, { Suspense } from "react";
-import { RelayEnvironmentProvider } from "react-relay/hooks";
-// import RelayEnvironment from './relay/Environment';
-// import ErrorBoundary from './ErrorBoundary';
-import { hot } from "react-hot-loader";
+import React, { Suspense } from 'react';
+import { RelayEnvironmentProvider } from 'react-relay/hooks';
+import RelayEnvironment from './relay/Environment';
+import ErrorBoundary from './ErrorBoundary';
+import { hot } from 'react-hot-loader';
 
 // const UserList = React.lazy(() => import('./UserList'));
 
 function App() {
   return (
-    // <RelayEnvironmentProvider environment={RelayEnvironment}>
-    //   <ErrorBoundary>
-    <Suspense fallback={"Loading..."}>
-      <div>wellerson</div>
-    </Suspense>
-    //   </ErrorBoundary>
-    // </RelayEnvironmentProvider>
+    <RelayEnvironmentProvider environment={RelayEnvironment}>
+      <ErrorBoundary>
+        <Suspense fallback={'Loading...'}>
+          {/* <UserList /> */}
+        <div>wellerson test</div>
+        </Suspense>
+      </ErrorBoundary>
+    </RelayEnvironmentProvider>
   );
 }
 
