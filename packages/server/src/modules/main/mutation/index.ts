@@ -1,5 +1,7 @@
-import createUserMutation from "./createUserMutation";
+import UserLoginMutation from "./UserLoginMutation";
+import UserRegisterMutation from "./UserRegisterMutation";
 
 export default {
-  createUserMutation,
+  UserLoginMutation,
+  UserRegisterMutation,
 };

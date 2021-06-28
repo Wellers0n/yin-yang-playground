@@ -1,9 +1,11 @@
 import User from "../../../models/User";
+import bcrypt from 'bcryptjs';
 import { GraphQLString, GraphQLNonNull, GraphQLBoolean } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
+import { generateToken } from "../../../auth";
 
 export default mutationWithClientMutationId({
-  name: "createUserMutation",
+  name: "userRegister",
   inputFields: {
     name: {
       type: new GraphQLNonNull(GraphQLString),
@@ -21,17 +23,24 @@ export default mutationWithClientMutationId({
   mutateAndGetPayload: async ({ name, email, password, description }) => {
     const user = await User.findOne({ email });
 
-    if (!user) {
-      await User.create({ name, email, password, description });
+    if (user) {
       return {
+        message: "User exist",
         error: false,
-        message: "User created successfully",
       };
     }
 
+    const userCreated = await User.create({
+      name,
+      email,
+      password: bcrypt.hashSync(password, 8),
+      description,
+    });
+
     return {
-      error: true,
-      message: "User exist",
+      token: generateToken(userCreated),
+      message: "User created successfully",
+      error: false,
     };
   },
   outputFields: {
@@ -42,6 +51,10 @@ export default mutationWithClientMutationId({
     error: {
       type: GraphQLBoolean,
       resolve: ({ error }) => error,
+    },
+    token: {
+      type: GraphQLString,
+      resolve: ({ token }) => token,
     },
   },
 });
