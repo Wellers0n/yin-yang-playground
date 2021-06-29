@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
+import './App.css'
 
 const root = document.createElement('div');
 document.body.appendChild(root);
