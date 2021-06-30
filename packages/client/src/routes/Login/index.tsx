@@ -9,12 +9,12 @@ import {
   Title,
   Box,
   Register,
-  Button
+  Button,
 } from "./styles";
 import Logo from "../../assets/images/location.png";
 
 // components
-import Input from '../../components/Input'
+import Input from "../../components/Input";
 
 const Login = () => {
   return (
@@ -29,8 +29,12 @@ const Login = () => {
       <WrapperLogin>
         <Title>Log in</Title>
         <Box>
-          <Input title={'Email'} type={'text'} placeholder={'joe@email.com'} />
-          <Input title={'Password'} type={'password'} placeholder={'Enter your password'} />
+          <Input title={"Email"} type={"text"} placeholder={"joe@email.com"} />
+          <Input
+            title={"Password"}
+            type={"password"}
+            placeholder={"Enter your password"}
+          />
           <Register>Register</Register>
           <Button>Login</Button>
         </Box>
