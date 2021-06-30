@@ -46,8 +46,8 @@ export const Title = styled.h2`
 `;
 
 export const Box = styled.div`
-  width: 60%;
-  height: 60%;
+  width: 50%;
+  height: 100%;
   margin-top: 20px;
   display: flex;
   justify-content: center;
