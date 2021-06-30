@@ -1,0 +1,58 @@
+schema {
+  query: QueryType
+  mutation: MutationType
+}
+
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+type MutationType {
+  UserLoginMutation(input: UserLoginInput!): UserLoginPayload
+  UserRegisterMutation(input: userRegisterInput!): userRegisterPayload
+}
+
+"""Get planets[] and planet"""
+type QueryType {
+  user(id: ID!): Users
+  users(skip: Int, limit: Int): [Users]
+}
+
+input UserLoginInput {
+  email: String!
+  password: String!
+  clientMutationId: String
+}
+
+type UserLoginPayload {
+  token: String
+  message: String
+  clientMutationId: String
+}
+
+input userRegisterInput {
+  name: String!
+  email: String!
+  password: String!
+  description: String!
+  clientMutationId: String
+}
+
+type userRegisterPayload {
+  message: String
+  error: Boolean
+  token: String
+  clientMutationId: String
+}
+
+type Users {
+  """The ID of an object"""
+  id: ID!
+  _id: ID
+  name: String
+  email: String
+  password: String
+  description: String
+}
