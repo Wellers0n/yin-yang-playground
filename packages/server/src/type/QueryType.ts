@@ -17,13 +17,8 @@ export default new GraphQLObjectType({
   fields: () => ({
     user: {
       type: UserType,
-      args: {
-        id: {
-          type: new GraphQLNonNull(GraphQLID),
-        },
-      },
       resolve: (parentValue, args, ctx) => {
-        return userModel.findOne({ _id: args.id });
+        return ctx.user ? userModel.findOne({ _id: ctx.user._id }) : null;
       },
     },
     users: {
