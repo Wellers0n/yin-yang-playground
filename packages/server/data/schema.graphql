@@ -12,12 +12,24 @@ directive @specifiedBy(
 type MutationType {
   UserLoginMutation(input: UserLoginInput!): UserLoginPayload
   UserRegisterMutation(input: userRegisterInput!): userRegisterPayload
+  UserDeleteMutation(input: UserDeleteInput!): UserDeletePayload
 }
 
 """Get planets[] and planet"""
 type QueryType {
-  user(id: ID!): Users
+  user: Users
   users(skip: Int, limit: Int): [Users]
+}
+
+input UserDeleteInput {
+  id: String!
+  clientMutationId: String
+}
+
+type UserDeletePayload {
+  users: [Users]
+  message: String
+  clientMutationId: String
 }
 
 input UserLoginInput {
