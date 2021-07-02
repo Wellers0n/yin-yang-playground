@@ -7,6 +7,13 @@ import fetchWithRetries from "./fetchWithRetries";
 
 export const GRAPHQL_URL = "http://localhost:5000/graphql";
 
+export const TOKEN_KEY = "token";
+
+export function getToken() {
+  // get token from cookie or session token instead
+  return localStorage.getItem(TOKEN_KEY);
+}
+
 // Define a function that fetches the results of a request (query/mutation/etc)
 // and returns its results as a Promise:
 const fetchQuery = async (
@@ -18,6 +25,7 @@ const fetchQuery = async (
     const body = getRequestBody(request, variables, uploadables);
     const headers = {
       ...getHeaders(uploadables),
+      Authorization: getToken(),
     };
 
     const response = await fetchWithRetries(GRAPHQL_URL, {

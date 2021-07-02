@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "yarn start:server & yarn start:web",
+    "start": "yarn start:server & yarn start:client",
     "start:client": "yarn workspace @challenge/client run start",
     "start:server": "yarn workspace @challenge/server run start"
   },
