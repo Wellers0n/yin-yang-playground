@@ -1,2 +1,3 @@
-# code-challenge-entria
-code challenge entria
+# yin-yang-playground
+
+yin yang playground
