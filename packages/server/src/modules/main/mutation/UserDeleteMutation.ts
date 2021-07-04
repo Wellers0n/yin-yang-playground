@@ -10,9 +10,9 @@ export default mutationWithClientMutationId({
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  mutateAndGetPayload: async ({ id }) => {
+  mutateAndGetPayload: async ({ id }, ctx) => {
     await User.deleteOne({ _id: id });
-    const users = await User.find({});
+    const users = await User.find({ email: { $ne: ctx.user.email } });
 
     return {
       message: "User deleted with successfully",
