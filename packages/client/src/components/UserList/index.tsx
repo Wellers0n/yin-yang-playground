@@ -5,14 +5,14 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { graphql, useFragment } from "react-relay";
 
-import { UserList_query$key } from "./__generated__/UserList_query.graphql";
+import { UserList_query$key,  } from "./__generated__/UserList_query.graphql";
 
 type Props = {
   query: UserList_query$key;
 };
 
 const UserList = (props: Props) => {
-  const data = useFragment(
+  const data = useFragment<UserList_query$key>(
     graphql`
       fragment UserList_query on QueryType {
         users {
