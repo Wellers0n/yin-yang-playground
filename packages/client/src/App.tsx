@@ -5,8 +5,6 @@ import ErrorBoundary from "./ErrorBoundary";
 import { hot } from "react-hot-loader";
 import Router from "./Router";
 
-// const UserList = React.lazy(() => import('./UserList'));
-
 function App() {
   return (
     <RelayEnvironmentProvider environment={RelayEnvironment}>
