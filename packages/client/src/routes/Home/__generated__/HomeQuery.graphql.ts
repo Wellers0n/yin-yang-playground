@@ -3,17 +3,14 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type HomeQueryVariables = {};
 export type HomeQueryResponse = {
-    readonly user: {
+    readonly me: {
+        readonly id: string;
         readonly name: string | null;
-        readonly email: string | null;
     } | null;
-    readonly users: ReadonlyArray<{
-        readonly name: string | null;
-        readonly description: string | null;
-        readonly email: string | null;
-    } | null> | null;
+    readonly " $fragmentRefs": FragmentRefs<"UserList_query">;
 };
 export type HomeQuery = {
     readonly response: HomeQueryResponse;
@@ -24,15 +21,19 @@ export type HomeQuery = {
 
 /*
 query HomeQuery {
-  user {
-    name
-    email
+  ...UserList_query
+  me {
     id
-  }
-  users {
     name
-    description
+  }
+}
+
+fragment UserList_query on QueryType {
+  users {
+    _id
+    name
     email
+    description
     id
   }
 }
@@ -43,28 +44,27 @@ var v0 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "name",
+  "name": "id",
   "storageKey": null
 },
 v1 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "email",
+  "name": "name",
   "storageKey": null
 },
 v2 = {
   "alias": null,
   "args": null,
-  "kind": "ScalarField",
-  "name": "description",
-  "storageKey": null
-},
-v3 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "id",
+  "concreteType": "Users",
+  "kind": "LinkedField",
+  "name": "me",
+  "plural": false,
+  "selections": [
+    (v0/*: any*/),
+    (v1/*: any*/)
+  ],
   "storageKey": null
 };
 return {
@@ -74,32 +74,11 @@ return {
     "metadata": null,
     "name": "HomeQuery",
     "selections": [
+      (v2/*: any*/),
       {
-        "alias": null,
         "args": null,
-        "concreteType": "Users",
-        "kind": "LinkedField",
-        "name": "user",
-        "plural": false,
-        "selections": [
-          (v0/*: any*/),
-          (v1/*: any*/)
-        ],
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "concreteType": "Users",
-        "kind": "LinkedField",
-        "name": "users",
-        "plural": true,
-        "selections": [
-          (v0/*: any*/),
-          (v2/*: any*/),
-          (v1/*: any*/)
-        ],
-        "storageKey": null
+        "kind": "FragmentSpread",
+        "name": "UserList_query"
       }
     ],
     "type": "QueryType",
@@ -116,41 +95,47 @@ return {
         "args": null,
         "concreteType": "Users",
         "kind": "LinkedField",
-        "name": "user",
-        "plural": false,
-        "selections": [
-          (v0/*: any*/),
-          (v1/*: any*/),
-          (v3/*: any*/)
-        ],
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "concreteType": "Users",
-        "kind": "LinkedField",
         "name": "users",
         "plural": true,
         "selections": [
-          (v0/*: any*/),
-          (v2/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "_id",
+            "storageKey": null
+          },
           (v1/*: any*/),
-          (v3/*: any*/)
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "email",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "description",
+            "storageKey": null
+          },
+          (v0/*: any*/)
         ],
         "storageKey": null
-      }
+      },
+      (v2/*: any*/)
     ]
   },
   "params": {
-    "cacheID": "ff632b9b4227eb14c788e31b3c6918b5",
+    "cacheID": "6bc010dcbc269bde2c035c5801e78216",
     "id": null,
     "metadata": {},
     "name": "HomeQuery",
     "operationKind": "query",
-    "text": "query HomeQuery {\n  user {\n    name\n    email\n    id\n  }\n  users {\n    name\n    description\n    email\n    id\n  }\n}\n"
+    "text": "query HomeQuery {\n  ...UserList_query\n  me {\n    id\n    name\n  }\n}\n\nfragment UserList_query on QueryType {\n  users {\n    _id\n    name\n    email\n    description\n    id\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '853209d4e757743b1fd0bef719c484b9';
+(node as any).hash = '006d1007f92b6288f8a55c92c001730d';
 export default node;
