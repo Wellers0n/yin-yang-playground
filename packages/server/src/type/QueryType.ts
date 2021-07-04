@@ -1,9 +1,8 @@
 import {
   GraphQLObjectType,
   GraphQLList,
-  GraphQLNonNull,
-  GraphQLID,
   GraphQLInt,
+  GraphQLString,
 } from "graphql";
 // types
 import UserType from "../modules/main/UserType";
@@ -13,12 +12,23 @@ import userModel from "../models/User";
 
 export default new GraphQLObjectType({
   name: "QueryType",
-  description: "Get planets[] and planet",
+  description: "Get users[], user and me",
   fields: () => ({
-    user: {
+    me: {
       type: UserType,
       resolve: (parentValue, args, ctx) => {
         return ctx.user ? userModel.findOne({ _id: ctx.user._id }) : null;
+      },
+    },
+    user: {
+      type: UserType,
+      args: {
+        id: {
+          type: GraphQLString,
+        },
+      },
+      resolve: (parentValue, args, ctx) => {
+        return ctx.user ? userModel.findOne({ _id: args.id }) : null;
       },
     },
     users: {
@@ -32,10 +42,14 @@ export default new GraphQLObjectType({
         },
       },
       resolve: (parentValue, args, ctx) => {
-        // const idUser = ctx.user.id;
         const limit = args.limit;
         const skip = Math.max(0, args.skip);
-        return userModel.find({}).limit(limit).skip(skip);
+        return ctx.user
+          ? userModel
+              .find({ email: { $ne: ctx.user.email } })
+              .limit(limit)
+              .skip(skip)
+          : null;
       },
     },
   }),

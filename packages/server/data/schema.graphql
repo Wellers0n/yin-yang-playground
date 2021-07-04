@@ -1,3 +1,4 @@
+
 schema {
   query: QueryType
   mutation: MutationType
@@ -17,7 +18,8 @@ type MutationType {
 
 """Get planets[] and planet"""
 type QueryType {
-  user: Users
+  me: Users
+  user(id: String): Users
   users(skip: Int, limit: Int): [Users]
 }
 
