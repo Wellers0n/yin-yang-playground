@@ -13,9 +13,16 @@ export const Box = styled.div`
   box-shadow: 1px 3px 5px;
   border-radius: 10px;
   .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     border-radius: 10px 0 0 10px;
     flex: 1;
     background-color: #1aebb7;
+    svg {
+      font-size: 1.5em;
+    }
   }
 
   .right {
