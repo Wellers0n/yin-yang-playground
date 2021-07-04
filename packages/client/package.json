@@ -24,7 +24,7 @@
     "@types/hoist-non-react-statics": "^3.3.1",
     "@types/http-proxy-middleware": "^1.0.0",
     "@types/jest": "^26.0.23",
-    "@types/node": "^15.12.4",
+    "@types/node": "^16.0.0",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.8",
     "@types/react-relay": "^11.0.1",
@@ -53,6 +53,9 @@
     "webpack-plugin-serve": "^1.4.1"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "hoist-non-react-statics": "^3.3.2",
     "mini-css-extract-plugin": "^1.6.1",
     "react": "^17.0.2",
