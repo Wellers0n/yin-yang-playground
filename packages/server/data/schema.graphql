@@ -1,4 +1,3 @@
-
 schema {
   query: QueryType
   mutation: MutationType
@@ -14,9 +13,10 @@ type MutationType {
   UserLoginMutation(input: UserLoginInput!): UserLoginPayload
   UserRegisterMutation(input: userRegisterInput!): userRegisterPayload
   UserDeleteMutation(input: UserDeleteInput!): UserDeletePayload
+  UserUpdateMutation(input: UserUpdateInput!): UserUpdatePayload
 }
 
-"""Get planets[] and planet"""
+"""Get users[], user and me"""
 type QueryType {
   me: Users
   user(id: String): Users
@@ -69,4 +69,18 @@ type Users {
   email: String
   password: String
   description: String
+}
+
+input UserUpdateInput {
+  id: String!
+  name: String!
+  description: String!
+  email: String!
+  clientMutationId: String
+}
+
+type UserUpdatePayload {
+  users: [Users]
+  message: String
+  clientMutationId: String
 }

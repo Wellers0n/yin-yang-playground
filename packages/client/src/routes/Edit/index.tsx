@@ -1,20 +1,76 @@
 import React, { useState } from "react";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, useHistory } from "react-router";
 import { Container, Wrapper, Title, Box, Button } from "./styles";
-import { graphql, commitMutation } from "react-relay";
+import { graphql, commitMutation, useLazyLoadQuery } from "react-relay";
 import Environment from "../../relay/Environment";
+import { EditQuery } from "./__generated__/EditQuery.graphql";
+import { EditMutationResponse } from "./__generated__/EditMutation.graphql";
 
 // components
 import Input from "../../components/Input";
 
 const Edit = (props: RouteComponentProps) => {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const { id } = props.location.state;
 
-  // const mutation = graphql``;
+  const data = useLazyLoadQuery<EditQuery>(
+    graphql`
+      query EditQuery($id: String) {
+        user(id: $id) {
+          id
+          name
+          description
+          email
+        }
+      }
+    `,
+    { id },
+    { fetchPolicy: "network-only" }
+  );
 
-  const submit = () => {};
+  const history = useHistory();
+
+  const { user } = data;
+
+  const [email, setEmail] = useState(user?.email || "");
+  const [name, setName] = useState(user?.name || "");
+  const [description, setDescription] = useState(user?.description || "");
+
+  const mutation = graphql`
+    mutation EditMutation($input: UserUpdateInput!) {
+      UserUpdateMutation(input: $input) {
+        users {
+          _id
+          name
+          description
+          email
+        }
+        message
+      }
+    }
+  `;
+
+  function updater(store: any) {
+    const root = store.getRoot();
+
+    const newUsers = store
+      .getRootField("UserUpdateMutation")
+      .getLinkedRecords("users");
+
+    root.setLinkedRecords(newUsers, "users");
+  }
+
+  const submit = () => {
+    commitMutation(Environment, {
+      mutation,
+      variables: { input: { id, email, description, name } },
+      updater,
+      onCompleted: (response: EditMutationResponse, errors: any) => {
+        if (errors) return console.log(errors);
+        history.push("/home");
+      },
+      onError: (err) => console.error(err),
+    });
+  };
 
   return (
     <Container>

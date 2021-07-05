@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { graphql, useFragment, commitMutation } from "react-relay";
-import Environment from "../../relay/Environment"
+import Environment from "../../relay/Environment";
 import { UserList_query$key } from "./__generated__/UserList_query.graphql";
-import { UserListQueryResponse, UserListQueryVariables } from "./__generated__/UserListQuery.graphql";
+import { UserListQueryResponse } from "./__generated__/UserListQuery.graphql";
 
 type Props = {
   query: UserList_query$key;
@@ -32,29 +32,28 @@ const UserList = (props: Props) => {
   const { users } = data;
 
   const mutation = graphql`
-  mutation UserListQuery($input: UserDeleteInput!) {
-    UserDeleteMutation(input: $input) {
-      users {
-        _id,
-        name,
-        description, 
-        email
+    mutation UserListMutation($input: UserDeleteInput!) {
+      UserDeleteMutation(input: $input) {
+        users {
+          _id
+          name
+          description
+          email
+        }
+        message
       }
-      message
     }
+  `;
+
+  function updater(store: any) {
+    const root = store.getRoot();
+
+    const newUsers = store
+      .getRootField("UserDeleteMutation")
+      .getLinkedRecords("users");
+
+    root.setLinkedRecords(newUsers, "users");
   }
-`;
-
-function updater(store: any) {
-  const root = store.getRoot();
-
-  const newUsers = store
-    .getRootField("UserDeleteMutation")
-    .getLinkedRecords("users");
-
-  root.setLinkedRecords(newUsers, "users");
-}
-
 
   const deleteSubmit = (id: string | null | undefined) => {
     commitMutation(Environment, {
@@ -75,10 +74,15 @@ function updater(store: any) {
           <Box key={index}>
             <div className="left">
               <FontAwesomeIcon
-                onClick={() => history.push(`/edit/${value?._id}`)}
+                onClick={() =>
+                  history.push(`/edit/${value?._id}`, { id: value?._id })
+                }
                 icon={faEdit}
               />
-              <FontAwesomeIcon icon={faTrash} onClick={() => deleteSubmit(value?._id)} />
+              <FontAwesomeIcon
+                icon={faTrash}
+                onClick={() => deleteSubmit(value?._id)}
+              />
             </div>
             <div className="right">
               <Name>{value?.name}</Name>
