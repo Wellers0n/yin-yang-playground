@@ -16,7 +16,7 @@
     
 <br/>
 
-## fullstack javascript  
+## Fullstack typescript/javascript  
   
   yin-yang-playground uses a stack full `JS/TS` on the frontend and backend, I'm making this project to improve
   my skills with graphql and relay.
