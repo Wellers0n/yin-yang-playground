@@ -2,9 +2,9 @@
     <img src="./packages/client/src/assets/images/yin-yang.png" height="130"/>
 </p>
 <p align="center">
-    <img src="https://img.shields.io/github/package-json/v/wellers0n/yin-yang-playground.svg"/>
-    <img src="https://img.shields.io/github/last-commit/wellers0n/yin-yang-playground.svg"/>
-    <img src="https://img.shields.io/github/license/wellers0n/yin-yang-playground.svg"/>
+    <img src="https://img.shields.io/github/package-json/v/wellers0n/yin-yang-playground?style=flat-square"/>
+    <img src="https://img.shields.io/github/last-commit/wellers0n/yin-yang-playground?style=flat-square"/>
+    <img src="https://img.shields.io/github/license/wellers0n/yin-yang-playground?style=flat-square"/>
     <a href="https://twitter.com/wellers0n_" target="_blank">
         <img src="https://img.shields.io/twitter/url/https/wellers0n_.svg?style=social"/>
     </a>
@@ -16,7 +16,7 @@
     
 <br/>
 
-## fullstack javascript  
+## Fullstack typescript/javascript  
   
   yin-yang-playground uses a stack full `JS/TS` on the frontend and backend, I'm making this project to improve
   my skills with graphql and relay.
