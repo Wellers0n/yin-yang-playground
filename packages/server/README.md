@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./../client/src/assets/images/frontend.png" height="130"/>
+    <img src="./../client/src/assets/images/backend.png" height="130"/>
 </p>
 <p align="center">
     <img src="https://img.shields.io/github/package-json/v/wellers0n/yin-yang-playground?style=flat-square"/>
