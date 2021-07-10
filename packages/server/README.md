@@ -11,22 +11,22 @@
 </p>
 
 <p>
-   <h1 align="center">Frontend</h1>
+   <h1 align="center">Backend</h1>
 <p/>
     
 <br/>
 
-## Client package  
+## Server package  
   
-The client uses relay and react to build front-end
+The client uses graphql and koa to build back-end
 
-## Screens
+## Routes
 
 
 
 ## Initing in the your PC
 
 - For clone the project `git clone https://github.com/Wellers0n/yin-yang-playground.git`
-- Enter in the folder `cd yin-yang-playground/packages/client`
+- Enter in the folder `cd yin-yang-playground/packages/server`
 - To install project dependency: `yarn install`
 - After the installation of the dependencies `yarn start` in the default directory
