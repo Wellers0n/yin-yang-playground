@@ -27,3 +27,8 @@ export default new GraphQLObjectType({
     },
   }),
 });
+
+// export const UserConnection = connectionDefinitions({
+//   name: "User",
+//   nodeType: GraphQLNonNull(UserType),
+// });
