@@ -23,8 +23,16 @@ The client uses relay and react to build front-end
 ## Screens
 
 ### Login
-<img src="./src/assets/images/login.png" height="130"/>
+<img src="./src/assets/images/login.png"/>
 
+### Register
+<img src="./src/assets/images/register.png"/>
+
+### Home
+<img src="./src/assets/images/home.png"/>
+
+### Edit User
+<img src="./src/assets/images/editUser.png"/>
 
 ## Initing in the your PC
 
