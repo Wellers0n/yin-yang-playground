@@ -22,7 +22,74 @@ The client uses graphql and koa to build back-end
 
 ## Routes
 
+### Queries
 
+#### me
+```graphql
+me {
+  id
+  _id
+  name
+  description
+  email
+}
+```
+
+#### User
+```graphql
+user {
+  id
+  _id
+  name
+  description
+  email
+}
+```
+
+#### Users[Array]
+```graphql
+users {
+  id
+  _id
+  name
+  description
+  email
+}
+```
+
+### Mutations
+
+#### UserLoginMutation
+```graphql
+UserLoginMutation(input: {email: "test@gmail.com", password: "test"}) {
+  token
+  message
+}
+```
+
+#### UserRegisterMutation
+```graphql
+UserRegisterMutation(input: {email: "test@gmail.com", password: "test", description: "test", name: "test name"}) {
+  token
+  message
+}
+```
+
+#### UserDeleteMutation
+```graphql
+UserDeleteMutation(input: {id: 1}) {
+  users
+  message
+}
+```
+
+#### UserUpdateMutation
+```graphql
+UserUpdateMutation(input: {id:1, email: "test@gmail.com", description: "test", name: "test name"}) {
+  users
+  message
+}
+```
 
 ## Initing in the your PC
 
