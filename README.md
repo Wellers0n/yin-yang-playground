@@ -21,6 +21,9 @@
   yin-yang-playground uses a stack full `JS/TS` on the frontend and backend, I'm making this project to improve
   my skills with graphql and relay.
   
+  ##### [Frontend](https://github.com/Wellers0n/yin-yang-playground/tree/master/packages/client)
+  ##### [Backend](https://github.com/Wellers0n/yin-yang-playground/tree/master/packages/server)
+  
 ## Initing in the your PC
 
 - For clone the project `git clone https://github.com/Wellers0n/yin-yang-playground.git`
