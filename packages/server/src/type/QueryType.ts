@@ -6,7 +6,7 @@ import {
 } from "graphql";
 // types
 import UserType, { UserConnection } from "../modules/main/UserType";
-import { connectionArgs } from "graphql-relay";
+import { connectionArgs, connectionFromArray } from "graphql-relay";
 
 // models
 import userModel from "../models/User";
@@ -37,8 +37,9 @@ export default new GraphQLObjectType({
       args: {
         ...connectionArgs,
       },
-      resolve: (parentValue, args, ctx) => {
-        return userModel.find().lean();
+      resolve: async (parentValue, args, ctx) => {
+        const data = await userModel.find();
+        return connectionFromArray(data, args);
       },
     },
   }),

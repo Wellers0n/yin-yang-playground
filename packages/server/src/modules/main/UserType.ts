@@ -4,9 +4,7 @@ import {
   GraphQLID,
   GraphQLNonNull,
 } from "graphql";
-import { globalIdField } from "graphql-relay";
-import { connectionDefinitions } from "../../core/connection/CustomConnectionType";
-// import { connectionDefinitions, globalIdField} from "graphql-relay";
+import { connectionDefinitions, globalIdField} from "graphql-relay";
 
 const UserType = new GraphQLObjectType({
   name: "User",
