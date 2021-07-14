@@ -5,7 +5,8 @@ import {
   GraphQLString,
 } from "graphql";
 // types
-import UserType from "../modules/main/UserType";
+import UserType, { UserConnection } from "../modules/main/UserType";
+import { connectionArgs } from "graphql-relay";
 
 // models
 import userModel from "../models/User";
@@ -32,24 +33,12 @@ export default new GraphQLObjectType({
       },
     },
     users: {
-      type: new GraphQLList(UserType),
+      type: UserConnection.connectionType,
       args: {
-        skip: {
-          type: GraphQLInt,
-        },
-        limit: {
-          type: GraphQLInt,
-        },
+        ...connectionArgs,
       },
       resolve: (parentValue, args, ctx) => {
-        const limit = args.limit;
-        const skip = Math.max(0, args.skip);
-        return ctx.user
-          ? userModel
-              .find({ email: { $ne: ctx.user.email } })
-              .limit(limit)
-              .skip(skip)
-          : null;
+        return userModel.find().lean();
       },
     },
   }),
