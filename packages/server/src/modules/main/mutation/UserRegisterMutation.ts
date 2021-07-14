@@ -1,8 +1,9 @@
 import User from "../../../models/User";
 import bcrypt from 'bcryptjs';
 import { GraphQLString, GraphQLNonNull, GraphQLBoolean } from "graphql";
-import { mutationWithClientMutationId } from "graphql-relay";
+import { mutationWithClientMutationId, offsetToCursor } from "graphql-relay";
 import { generateToken } from "../../../auth";
+import { UserConnection } from '../UserType';
 
 export default mutationWithClientMutationId({
   name: "userRegister",
@@ -38,12 +39,20 @@ export default mutationWithClientMutationId({
     });
 
     return {
+      user: userCreated,
       token: generateToken(userCreated),
       message: "User created successfully",
       error: false,
     };
   },
   outputFields: {
+    userEdge: {
+      type: UserConnection.edgeType,
+      resolve: ({ user }) => ({
+        cursor: offsetToCursor(user.id),
+        node: user,
+      }),
+    },
     message: {
       type: GraphQLString,
       resolve: ({ message }) => message,
@@ -56,5 +65,5 @@ export default mutationWithClientMutationId({
       type: GraphQLString,
       resolve: ({ token }) => token,
     },
-  },
+    }
 });
