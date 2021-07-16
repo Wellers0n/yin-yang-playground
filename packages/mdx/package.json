@@ -20,7 +20,6 @@
     "mdx-deck-live-code": "^1.0.1",
     "qrcode.react": "^1.0.1",
     "raw-loader": "^4.0.2",
-    "code-surfer": "^3.1.1",
     "codemirror": "^5.62.0",
     "mdx-deck-code-surfer": "^0.5.5",
     "patch-package": "^6.4.7",
