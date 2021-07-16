@@ -5,7 +5,7 @@ const { future } = themes;
 export default {
   ...future,
   colors: {
-    // ...themes.colors,
+    text: '#c6d1dd',
     background: "#272425",
   },
   // Customize your presentation theme here.
