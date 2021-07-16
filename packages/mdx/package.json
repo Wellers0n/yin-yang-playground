@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "codemirror": "^5.62.0",
-    "mdx-code": "^1.1.5",
+    "mdx-code": "^2.0.0",
     "mdx-deck": "^1.10.2",
     "mdx-deck-code-surfer": "^0.5.5",
     "mdx-deck-live-code": "^1.0.1",
