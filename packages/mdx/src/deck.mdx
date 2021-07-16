@@ -1,11 +1,11 @@
 import Code from "mdx-code";
-import { Head, Image } from "mdx-deck";
-import { CodeSurfer } from "code-surfer";
+import { Head, Image, themes } from "mdx-deck";
+import { CodeSurfer } from "mdx-deck-code-surfer";
 
-export { default as theme } from './theme'
+export { default as theme } from './theme';
 
-import { Cover } from './Cover';
-import { Intro } from './Intro';
+import { Cover } from "./Cover";
+import { Intro } from "./Intro";
 
 <Head>
   <title>GraphQL resolve ?</title>
@@ -17,3 +17,21 @@ import { Intro } from './Intro';
 
 <Intro />
 
+---
+<CodeSurfer
+  title="What is var, let and const?"
+  code={require('!raw-loader!./VarLetConst.js').default}
+  showNumbers={false}
+  dark={true}
+  lang="jsx"
+  steps={[
+    { notes: "Let's see it" },
+    { range: [1,1], notes: 'What would be `Var`' },
+    { range: [10,16], notes: 'With scope global' },
+    { range: [2,2], notes: 'What would be `Let`' },
+    { range: [18,22], notes: 'Without scope global' },
+    { range: [3,3], notes: 'What would be `Const`' },
+    { range: [5,7], notes: 'Would be a constant' },
+    { notes: "let's go" },
+  ]}
+/>

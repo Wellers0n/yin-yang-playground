@@ -75,7 +75,7 @@ const SocialMediaLink = ({ name, link, username }) => (
   <div>
     <Link href={link} target="_blank">
       <Row>
-        <IconImage src={require(`./img/${name}`)} />
+        <IconImage src={`./img/${name}`} />
         <Username>{username}</Username>
       </Row>
     </Link>
@@ -85,7 +85,7 @@ const SocialMediaLink = ({ name, link, username }) => (
 export const Intro = () => (
   <Root>
     <Row>
-      <Me src={require("./img/me.jpg")} />
+      <Me src={"./img/me.jpg"} />
       <MeName>Wellerson</MeName>
     </Row>
     <SpaceBetween>

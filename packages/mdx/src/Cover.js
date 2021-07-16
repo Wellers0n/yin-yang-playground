@@ -24,6 +24,7 @@ export const Center = styled.div`
 
 const Title = styled.span`
   font-size: 50px;
+  color: #c6d1dd;
   ${space}
 `;
 
@@ -47,7 +48,7 @@ export const Cover = () => (
   <Root>
     <Center>
       <ImgCenter>
-        <Img src={require("./img/graphql.png")} width={300} height={300} />
+        <Img src={"./img/graphql.png"} width={300} height={300} />
       </ImgCenter>
       <Title mt={20}>GraphQL resolve ?</Title>
     </Center>

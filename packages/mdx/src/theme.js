@@ -1,9 +1,8 @@
 import { themes } from "mdx-deck";
 
-const { dark, future } = themes;
+const { future } = themes;
 
 export default {
-  ...dark,
   ...future,
   colors: {
     // ...themes.colors,

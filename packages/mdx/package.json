@@ -14,16 +14,15 @@
     "publish:deck": "yarn build && yarn copy:static && vercel dist/",
     "postinstall": "patch-package"
   },
-  "devDependencies": {
+  "dependencies": {
     "mdx-code": "^2.0.0",
-    "mdx-deck": "^4.1.1",
+    "mdx-deck": "^1.10.0",
     "mdx-deck-live-code": "^1.0.1",
     "qrcode.react": "^1.0.1",
-    "raw-loader": "^4.0.2"
-  },
-  "dependencies": {
+    "raw-loader": "^4.0.2",
     "code-surfer": "^3.1.1",
     "codemirror": "^5.62.0",
+    "mdx-deck-code-surfer": "^0.5.5",
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0",
     "react-codemirror2": "^7.2.1",
