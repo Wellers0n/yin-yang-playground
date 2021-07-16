@@ -9,8 +9,7 @@
   "scripts": {
     "start": "yarn start:server & yarn start:client",
     "start:client": "yarn workspace @yin-yang/client run start",
-    "start:server": "yarn workspace @yin-yang/server run start",
-    "start:mdx": "yarn workspace @yin-yang/mdx run start"
+    "start:server": "yarn workspace @yin-yang/server run start"
   },
   "lint-staged": {
     "*.js": [
@@ -36,7 +35,9 @@
   "pre-commit": "lint-staged",
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/client",
+      "packages/server"
     ]
+    
   }
 }
