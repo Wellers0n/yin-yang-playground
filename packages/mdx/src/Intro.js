@@ -18,7 +18,7 @@ const IconImage = styled.img`
 
 const Link = styled.a`
   text-decoration: none;
-  color: #C6D1DD;
+  color: #c6d1dd;
 `;
 
 const Me = styled.img`
@@ -28,7 +28,7 @@ const Me = styled.img`
 
 const MeName = styled.span`
   font-size: 50px;
-  color: #C6D1DD;
+  color: #c6d1dd;
   margin-left: 60px;
 `;
 
@@ -51,14 +51,19 @@ export const Center = styled.div`
 const SpaceBetween = styled.div`
   display: flex;
   flex: 1;
+  width: 100%;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
-export const Root = styled.div([], {
+const Root = styled.div([], {
   width: "50vw",
   height: "70vh",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: 'column'
 });
 
 const Username = styled.span`

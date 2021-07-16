@@ -2,15 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { space, width } from "styled-system";
 
-import { Root } from "./Intro";
-
 const Img = styled.img`
   ${width}
 `;
 
+const Root = styled.div([], {
+  width: "50vw",
+  height: "70vh",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: 'column'
+});
+
 export const Center = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
