@@ -38,7 +38,8 @@ export default new GraphQLObjectType({
         ...connectionArgs,
       },
       resolve: async (parentValue, args, ctx) => {
-        const data = await userModel.find();
+        const data = await userModel.find({ email: { $ne: ctx.user.email } });
+        
         return connectionFromArray(data, args);
       },
     },
