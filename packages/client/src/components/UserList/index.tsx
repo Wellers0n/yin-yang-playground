@@ -5,7 +5,10 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { graphql, useFragment, commitMutation } from "react-relay";
 import Environment from "../../relay/Environment";
-import { UserList_query, UserList_query$key } from "./__generated__/UserList_query.graphql";
+import {
+  UserList_query,
+  UserList_query$key,
+} from "./__generated__/UserList_query.graphql";
 import { UserListMutationResponse } from "./__generated__/UserListMutation.graphql";
 
 type Props = {
@@ -80,13 +83,15 @@ const UserList = (props: Props) => {
             <div className="left">
               <FontAwesomeIcon
                 onClick={() =>
-                  history.push(`/edit/${value?.node._id}`, { id: value?.node?._id })
+                  history.push(`/edit/${value?.node?._id}`, {
+                    id: value?.node?._id,
+                  })
                 }
                 icon={faEdit}
               />
               <FontAwesomeIcon
                 icon={faTrash}
-                onClick={() => deleteSubmit(value?._id)}
+                onClick={() => deleteSubmit(value?.node?._id)}
               />
             </div>
             <div className="right">
