@@ -69,7 +69,7 @@ type User {
   email: String
   password: String
   description: String
-  organization: Organization
+  organizations: [Organization]
 }
 
 """A connection to a list of items."""
