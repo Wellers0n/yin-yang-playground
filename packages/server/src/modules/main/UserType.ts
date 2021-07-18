@@ -1,7 +1,8 @@
-import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList } from "graphql";
+import { GraphQLObjectType, GraphQLString, GraphQLID } from "graphql";
 import { connectionDefinitions, globalIdField } from "graphql-relay";
-import OrganizationType from "./OrganizationType";
+import { OrganizationConnection } from "./OrganizationType";
 import Organization from "../../models/Organization";
+import { connectionArgs, connectionFromArray } from "graphql-relay";
 
 const UserType = new GraphQLObjectType({
   name: "User",
@@ -29,9 +30,15 @@ const UserType = new GraphQLObjectType({
       resolve: (user) => user.description,
     },
     organizations: {
-      type: GraphQLList(OrganizationType),
+      type: OrganizationConnection.connectionType,
+      args: {
+        ...connectionArgs,
+      },
       resolve: async (user, args) => {
-        return Organization.find({ _id: { $in: user.organizationIds } });
+        const data = await Organization.find({
+          _id: { $in: user.organizationIds },
+        });
+        return connectionFromArray(data, args);
       },
     },
   }),
