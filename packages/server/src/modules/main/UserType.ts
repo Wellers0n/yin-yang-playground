@@ -1,10 +1,7 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLID,
-  GraphQLNonNull,
-} from "graphql";
-import { connectionDefinitions, globalIdField} from "graphql-relay";
+import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList } from "graphql";
+import { connectionDefinitions, globalIdField } from "graphql-relay";
+import OrganizationType from "./OrganizationType";
+import Organization from "../../models/Organization";
 
 const UserType = new GraphQLObjectType({
   name: "User",
@@ -31,6 +28,12 @@ const UserType = new GraphQLObjectType({
       type: GraphQLString,
       resolve: (user) => user.description,
     },
+    organization: {
+      type: GraphQLList(OrganizationType),
+      resolve: async (user, args) => {
+        return Organization.find({ _id: { $in: user.organizationIds } });
+      },
+    },
   }),
 });
 
@@ -38,5 +41,5 @@ export default UserType;
 
 export const UserConnection = connectionDefinitions({
   name: "User",
-  nodeType: GraphQLNonNull(UserType),
+  nodeType: UserType,
 });
