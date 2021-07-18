@@ -19,6 +19,9 @@ const User = new Schema({
     type: String,
     required: "password is requerid",
   },
+  organizationIds: {
+    type: Array
+  }
 });
 
 export default mongoose.model("User", User);
