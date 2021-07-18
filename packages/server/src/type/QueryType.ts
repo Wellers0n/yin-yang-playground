@@ -29,7 +29,7 @@ export default new GraphQLObjectType({
         },
       },
       resolve: (parentValue, args, ctx) => {
-        return ctx.user ? userModel.findOne({ _id: args.id }) : null;
+        return userModel.findOne({ _id: args.id });
       },
     },
     users: {
