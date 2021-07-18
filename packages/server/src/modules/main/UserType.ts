@@ -28,7 +28,7 @@ const UserType = new GraphQLObjectType({
       type: GraphQLString,
       resolve: (user) => user.description,
     },
-    organization: {
+    organizations: {
       type: GraphQLList(OrganizationType),
       resolve: async (user, args) => {
         return Organization.find({ _id: { $in: user.organizationIds } });
