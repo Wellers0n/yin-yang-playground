@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Container, Box, Name, Description, Email, List } from "./styles";
+import { Container, Box, Name, Description, Email, List, Button } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
@@ -117,7 +117,7 @@ const UserList = (props: Props) => {
           );
         })}
       </List>
-      <button onClick={() => loadNext(10)}>Load more friends</button>
+      <Button onClick={() => loadNext(10)}>Load more users</Button>
     </Container>
   );
 };

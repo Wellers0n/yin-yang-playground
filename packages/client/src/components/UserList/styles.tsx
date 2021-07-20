@@ -3,13 +3,15 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const List = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-
 
 export const Box = styled.div`
   display: flex;
@@ -59,3 +61,15 @@ export const Email = styled.div`
   margin-right: 10px;
   margin-bottom: -15px;
 `;
+
+
+export const Button = styled.button`
+  width: 200px;
+  height: 50px;
+  background-color: #1aebb7;
+  color: #003825;
+  border: 1px solid #003825;
+  border-radius: 15px;
+  font-size: 15px;
+  font-weight: bold;
+`
