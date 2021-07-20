@@ -1,14 +1,12 @@
 import * as React from "react";
-import { Container, Box, Name, Description, Email } from "./styles";
+import { Container, Box, Name, Description, Email, List } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
-import { graphql, useFragment, commitMutation } from "react-relay";
+import { graphql, usePaginationFragment, commitMutation } from "react-relay";
 import Environment from "../../relay/Environment";
-import {
-  UserList_query,
-  UserList_query$key,
-} from "./__generated__/UserList_query.graphql";
+import { UserListQuery } from "./__generated__/UserListQuery.graphql";
+import { UserList_query } from "./__generated__/UserList_query.graphql";
 import { UserListMutationResponse } from "./__generated__/UserListMutation.graphql";
 
 type Props = {
@@ -16,10 +14,25 @@ type Props = {
 };
 
 const UserList = (props: Props) => {
-  const data = useFragment<UserList_query$key>(
+  const {
+    data,
+    loadNext,
+    loadPrevious,
+    hasNext,
+    hasPrevious,
+    isLoadingNext,
+    isLoadingPrevious,
+    refetch, // For refetching connection
+  } = usePaginationFragment<UserListQuery, any>(
     graphql`
-      fragment UserList_query on QueryType {
-        users(first: 10) @connection(key: "UserList_users", filters: []) {
+      fragment UserList_query on QueryType
+      @argumentDefinitions(
+        count: { type: "Int", defaultValue: 10 }
+        cursor: { type: "String" }
+      )
+      @refetchable(queryName: "UserListQuery") {
+        users(first: $count, after: $cursor)
+          @connection(key: "UserList_users", filters: []) {
           edges {
             node {
               _id
@@ -77,31 +90,34 @@ const UserList = (props: Props) => {
 
   return (
     <Container>
-      {users?.edges?.map((value, index) => {
-        return (
-          <Box key={index}>
-            <div className="left">
-              <FontAwesomeIcon
-                onClick={() =>
-                  history.push(`/edit/${value?.node?._id}`, {
-                    id: value?.node?._id,
-                  })
-                }
-                icon={faEdit}
-              />
-              <FontAwesomeIcon
-                icon={faTrash}
-                onClick={() => deleteSubmit(value?.node?._id)}
-              />
-            </div>
-            <div className="right">
-              <Name>{value?.node?.name}</Name>
-              <Description>{value?.node?.description}</Description>
-              <Email>{value?.node?.email}</Email>
-            </div>
-          </Box>
-        );
-      })}
+      <List>
+        {users?.edges?.map((value, index) => {
+          return (
+            <Box key={index}>
+              <div className="left">
+                <FontAwesomeIcon
+                  onClick={() =>
+                    history.push(`/edit/${value?.node?._id}`, {
+                      id: value?.node?._id,
+                    })
+                  }
+                  icon={faEdit}
+                />
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  onClick={() => deleteSubmit(value?.node?._id)}
+                />
+              </div>
+              <div className="right">
+                <Name>{value?.node?.name}</Name>
+                <Description>{value?.node?.description}</Description>
+                <Email>{value?.node?.email}</Email>
+              </div>
+            </Box>
+          );
+        })}
+      </List>
+      <button onClick={() => loadNext(10)}>Load more friends</button>
     </Container>
   );
 };
