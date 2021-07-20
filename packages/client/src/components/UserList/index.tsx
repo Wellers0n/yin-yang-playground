@@ -6,11 +6,11 @@ import { useHistory } from "react-router-dom";
 import { graphql, usePaginationFragment, commitMutation } from "react-relay";
 import Environment from "../../relay/Environment";
 import { UserListQuery } from "./__generated__/UserListQuery.graphql";
-import { UserList_query } from "./__generated__/UserList_query.graphql";
+import { UserList_query$key } from "./__generated__/UserList_query.graphql";
 import { UserListMutationResponse } from "./__generated__/UserListMutation.graphql";
 
 type Props = {
-  query: UserList_query;
+  query: UserList_query$key;
 };
 
 const UserList = (props: Props) => {
@@ -23,11 +23,11 @@ const UserList = (props: Props) => {
     isLoadingNext,
     isLoadingPrevious,
     refetch, // For refetching connection
-  } = usePaginationFragment<UserListQuery, any>(
+  } = usePaginationFragment<UserListQuery, _>(
     graphql`
       fragment UserList_query on QueryType
       @argumentDefinitions(
-        count: { type: "Int", defaultValue: 10 }
+        count: { type: "Int", defaultValue: 3 }
         cursor: { type: "String" }
       )
       @refetchable(queryName: "UserListQuery") {
@@ -117,7 +117,7 @@ const UserList = (props: Props) => {
           );
         })}
       </List>
-      <Button onClick={() => loadNext(10)}>Load more users</Button>
+      <Button onClick={() => loadNext(3)}>Load more users</Button>
     </Container>
   );
 };
