@@ -50,7 +50,7 @@ export const Cover = () => (
       <ImgCenter>
         <Img src={"./img/graphql.png"} width={300} height={300} />
       </ImgCenter>
-      <Title mt={20}>GraphQL resolve ?</Title>
+      <Title mt={20}>GraphQL solves ?</Title>
     </Center>
   </Root>
 );

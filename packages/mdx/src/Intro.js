@@ -57,7 +57,7 @@ const SpaceBetween = styled.div`
   justify-content: space-around;
 `;
 
-const Root = styled.div([], {
+export const Root = styled.div([], {
   width: "50vw",
   height: "70vh",
   display: "flex",
@@ -102,7 +102,7 @@ export const Intro = () => (
     </SpaceBetween>
 
     <Flex flex={1} alignItems="center" justifyContent="center" mt={30}>
-      <MeName>Software Developer</MeName>
+      <MeName>Developer</MeName>
     </Flex>
   </Root>
 );

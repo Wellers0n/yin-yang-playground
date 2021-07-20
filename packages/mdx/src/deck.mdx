@@ -1,14 +1,15 @@
 import Code from "mdx-code";
-import { Head, Image, themes } from "mdx-deck";
+import { Head, Image, Appear } from "mdx-deck";
 import { CodeSurfer } from "mdx-deck-code-surfer";
 
-export { default as theme } from './theme';
+export { default as theme } from "./theme";
 
 import { Cover } from "./Cover";
 import { Intro } from "./Intro";
+import { Img } from "./Img";
 
 <Head>
-  <title>GraphQL resolve ?</title>
+  <title>GraphQL solves ?</title>
 </Head>
 
 <Cover />
@@ -18,20 +19,88 @@ import { Intro } from "./Intro";
 <Intro />
 
 ---
+
+# Overview
+
+<ul>
+  <Appear>
+    <li>What is GraphQL ?</li>
+    <li>Under fetching</li>
+    <li>Over fetching</li>
+    <li>Only one url</li>
+    <li>Schemas</li>
+    <li>Types</li>
+    <li>Request numbers</li>
+    <li>Documentation</li>
+    <li>Live code</li>
+  </Appear>
+</ul>
+
+---
+
+## GraphQL vs REST
+
+<Img src="./img/graphql-vs-rest.jpeg" width={1000} />
+
+---
+
+## What is an Under fetching
+
+Under fetching is when you get less data than you need
+
+---
+
+## What is an Over fetching
+
+It's when you get more data than you need (like some fields on the JSON that you don't need)
+
+---
+
+## How does it work ?
+
+<div>We need to get some data</div>
+
+<ul>
+    <div>Name</div>
+    <div>Mass</div>
+    <div>Gender</div>
+</ul>
+
+---
+
+### REST api request
+
+<div>https://swapi.dev/api/people/1/</div>
+<Img src="./img/json.png" width={850} />
+
+---
+
+### Graphql api request
+
+<div>graphql query</div>
+
+<Img src="./img/graphql-request.png" width={800} />
+
+<div>graphql response</div>
+
+<Img src="./img/graphql-response.png" width={800} />
+
+---
+
 <CodeSurfer
   title="What is var, let and const?"
-  code={require('!raw-loader!./VarLetConst.js')}
+  code={require("!raw-loader!./VarLetConst.js")}
   showNumbers={false}
   dark={true}
   lang="js"
   steps={[
     { notes: "Let's see it" },
-    { range: [1,1], notes: 'What would be `Var`' },
-    { range: [10,16], notes: 'With scope global' },
-    { range: [2,2], notes: 'What would be `Let`' },
-    { range: [18,22], notes: 'Without scope global' },
-    { range: [3,3], notes: 'What would be `Const`' },
-    { range: [5,7], notes: 'Would be a constant' },
+    { range: [1, 1], notes: "What would be `Var`" },
+    { range: [10, 16], notes: "With scope global" },
+    { range: [2, 2], notes: "What would be `Let`" },
+    { range: [18, 22], notes: "Without scope global" },
+    { range: [3, 3], notes: "What would be `Const`" },
+    { range: [5, 7], notes: "Would be a constant" },
     { notes: "let's go" },
   ]}
 />
