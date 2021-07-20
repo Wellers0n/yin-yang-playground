@@ -1,7 +1,15 @@
 import * as React from "react";
-import { Container, Box, Name, Description, Email, List, Button } from "./styles";
+import {
+  Container,
+  Box,
+  Name,
+  Description,
+  Email,
+  List,
+  Button,
+} from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { graphql, usePaginationFragment, commitMutation } from "react-relay";
 import Environment from "../../relay/Environment";
@@ -27,11 +35,11 @@ const UserList = (props: Props) => {
     graphql`
       fragment UserList_query on QueryType
       @argumentDefinitions(
-        count: { type: "Int", defaultValue: 3 }
+        first: { type: "Int", defaultValue: 3 }
         cursor: { type: "String" }
       )
       @refetchable(queryName: "UserListQuery") {
-        users(first: $count, after: $cursor)
+        users(first: $first, after: $cursor)
           @connection(key: "UserList_users", filters: []) {
           edges {
             node {
@@ -117,7 +125,13 @@ const UserList = (props: Props) => {
           );
         })}
       </List>
-      <Button onClick={() => loadNext(3)}>Load more users</Button>
+      <Button onClick={() => loadNext(3)}>
+        {isLoadingNext ? (
+          <FontAwesomeIcon icon={faSpinner} />
+        ) : (
+          "Load more users"
+        )}
+      </Button>
     </Container>
   );
 };

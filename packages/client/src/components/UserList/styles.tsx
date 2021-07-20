@@ -72,4 +72,5 @@ export const Button = styled.button`
   border-radius: 15px;
   font-size: 15px;
   font-weight: bold;
+}
 `
