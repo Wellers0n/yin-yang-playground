@@ -1,6 +1,5 @@
 import Code from "mdx-code";
 import { Head, Image, Appear } from "mdx-deck";
-import { CodeSurfer } from "mdx-deck-code-surfer";
 
 export { default as theme } from "./theme";
 
@@ -85,22 +84,4 @@ It's when you get more data than you need (like some fields on the JSON that you
 
 <Img src="./img/graphql-response.png" width={800} />
 
----
 
-<CodeSurfer
-  title="What is var, let and const?"
-  code={require("!raw-loader!./VarLetConst.js")}
-  showNumbers={false}
-  dark={true}
-  lang="js"
-  steps={[
-    { notes: "Let's see it" },
-    { range: [1, 1], notes: "What would be `Var`" },
-    { range: [10, 16], notes: "With scope global" },
-    { range: [2, 2], notes: "What would be `Let`" },
-    { range: [18, 22], notes: "Without scope global" },
-    { range: [3, 3], notes: "What would be `Const`" },
-    { range: [5, 7], notes: "Would be a constant" },
-    { notes: "let's go" },
-  ]}
-/>
