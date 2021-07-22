@@ -1,9 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLList,
-  GraphQLInt,
-  GraphQLString,
-} from "graphql";
+import { GraphQLObjectType, GraphQLString } from "graphql";
 // types
 import UserType, { UserConnection } from "../modules/main/UserType";
 import { connectionArgs, connectionFromArray } from "graphql-relay";
@@ -39,7 +34,7 @@ export default new GraphQLObjectType({
       },
       resolve: async (parentValue, args, ctx) => {
         const data = await userModel.find({ email: { $ne: ctx.user.email } });
-        
+
         return connectionFromArray(data, args);
       },
     },

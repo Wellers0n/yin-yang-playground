@@ -1,9 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLID,
-  GraphQLNonNull,
-} from "graphql";
+import { GraphQLObjectType, GraphQLString, GraphQLID } from "graphql";
 import { connectionDefinitions, globalIdField } from "graphql-relay";
 
 const OrganizationType = new GraphQLObjectType({

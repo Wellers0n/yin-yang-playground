@@ -19,20 +19,31 @@ import { Img } from "./Img";
 
 ---
 
+# Motivation
+
+<ul>
+    <div>Data fetching</div>
+    <div>Pagination with cursor</div>
+    <div>Documentation</div>
+</ul>
+
+---
+
 # Overview
 
 <ul>
-  <Appear>
-    <li>What is GraphQL ?</li>
-    <li>Under fetching</li>
-    <li>Over fetching</li>
-    <li>URL version</li>
-    <li>Schemas</li>
-    <li>Types</li>
-    <li>Request numbers</li>
-    <li>Documentation</li>
-    <li>Live code</li>
-  </Appear>
+    <div>What is GraphQL ?</div>
+    <div>Under fetching</div>
+    <div>Over fetching</div>
+    <div>Query</div>
+    <div>Mutation</div>
+    <div>URL version</div>
+    <div>GraphQL Object Type</div>
+    <div>Types</div>
+    <div>Request numbers</div>
+    <div>Cursor</div>
+    <div>Documentation</div>
+    <div>Code</div>
 </ul>
 
 ---
@@ -55,35 +66,108 @@ It's when you get more data than you need (like some fields on the JSON that you
 
 ---
 
-## How does it work ?
+## How does a query work?
 
 <div>We need to get some data</div>
 
 <ul>
     <div>Name</div>
-    <div>Mass</div>
-    <div>Gender</div>
+    <div>Email</div>
+    <div>Description</div>
 </ul>
 
 ---
 
 ### REST api request
 
-<div>https://swapi.dev/api/people/1/</div>
-<Img src="./img/json.png" width={850} />
+<div>https://fix.dev/api/user/60f291031a6d0b68dc2a149b/</div>
+<Img src="./img/api-response.png" width={850} />
 
 ---
 
-### Graphql api request
+### GraphQL Query type
 
-<div>graphql query</div>
-
-<Img src="./img/graphql-request.png" width={800} />
+<Img src="./img/query-type.png" width={1000} />
 
 ---
 
-### Graphql api response
+### GraphQL api request
 
-<div>graphql response</div>
+<div>GraphQL query</div>
 
-<Img src="./img/graphql-response.png" width={800} />
+<Img src="./img/graphql-request.png" width={1000} />
+
+---
+
+### GraphQL api response
+
+<div>GraphQL response</div>
+
+<Img src="./img/graphql-response.png" width={1000} />
+
+---
+
+### How does a mutation work?
+
+<Img src="./img/mutation.png" width={800} />
+
+
+---
+
+### Using mutation
+
+<Img src="./img/mutation-delete-user.png" width={1000} />
+
+
+---
+### Mutation response
+
+<Img src="./img/mutation-response.png" width={1000} />
+
+
+---
+
+### URL version
+
+<ul>
+    <div>https://fix.dev/api/v1/user/1/</div>
+    <div>https://fix.dev/api/v2/user/2/</div>
+    <div>https://fix.dev/api/v3/user/3/</div>
+</ul>
+
+---
+
+### GraphQL Object Type
+
+<Img src="./img/graphql-objectType.png" width={750} />
+
+---
+
+### Types
+
+<Img src="./img/fields.png" width={750} />
+
+---
+
+### Request numbers
+
+<Img src="./img/api-response.png" width={750} />
+
+---
+
+### With GraphQL
+
+<Img src="./img/organization.png" width={750} />
+
+---
+
+### Response
+
+<Img src="./img/organization-response.png" width={750} />
+
+---
+
+### Cursor Vs offset
+
+
+
