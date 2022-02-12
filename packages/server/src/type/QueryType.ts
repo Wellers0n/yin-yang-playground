@@ -13,7 +13,7 @@ export default new GraphQLObjectType({
     me: {
       type: UserType,
       resolve: (parentValue, args, ctx) => {
-        return ctx.user ? userModel.findOne({ _id: ctx.user._id }) : null;
+        return ctx.user ? ctx.loaders.userLoader.load(ctx.user._id) : null;
       },
     },
     user: {
@@ -24,7 +24,7 @@ export default new GraphQLObjectType({
         },
       },
       resolve: (parentValue, args, ctx) => {
-        return userModel.findOne({ _id: args.id });
+        return ctx.loaders.userLoader.load(args.id);
       },
     },
     users: {
@@ -33,9 +33,10 @@ export default new GraphQLObjectType({
         ...connectionArgs,
       },
       resolve: async (parentValue, args, ctx) => {
-        const data = await userModel.find({ email: { $ne: ctx.user.email } });
-
-        return connectionFromArray(data, args);
+        const users = await userModel.find({ email: { $ne: ctx.user.email } });
+        const ids = users.map((user: any) => user._id);
+        const batchUsers = await ctx.loaders.userLoader.loadMany(ids);
+        return connectionFromArray(batchUsers, args);
       },
     },
   }),
