@@ -8,6 +8,7 @@ import cors from "kcors";
 import koaPlayground from "graphql-playground-middleware-koa";
 import schema from "./schema";
 import { getUser } from "./auth";
+import { userLoader } from "./loaders";
 
 const graphqlHTTP = require("koa-graphql");
 
@@ -38,6 +39,9 @@ const graphqlSettingsPerReq = async (req: Request, ctx: Response) => {
     context: {
       user,
       req,
+      loaders: {
+        userLoader,
+      },
     },
   };
 };

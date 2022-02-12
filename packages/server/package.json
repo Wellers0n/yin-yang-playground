@@ -80,6 +80,7 @@
     "babel-core": "^6.26.3",
     "bcryptjs": "^2.4.3",
     "core-js": "^3.15.0",
+    "dataloader": "^2.0.0",
     "dotenv-safe": "^8.2.0",
     "graphql": "^15.5.1",
     "graphql-playground-middleware-koa": "^1.6.21",
