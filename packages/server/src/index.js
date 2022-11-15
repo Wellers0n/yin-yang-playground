@@ -11,9 +11,9 @@ import app from "./app";
     throw error;
   }
   const server = createServer(app.callback());
-  server.listen(5000, () => {
+  server.listen(5001, () => {
     console.log(
-      `SERVER ON: http://localhost:${process.env.PORT || 5000}/graphql`
+      `SERVER ON: http://localhost:${5001}/graphql`
     );
   });
 })();

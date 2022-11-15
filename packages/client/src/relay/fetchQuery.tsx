@@ -5,7 +5,7 @@ import { RequestNode } from "relay-runtime";
 import { handleData, getRequestBody, getHeaders, isMutation } from "./helpers";
 import fetchWithRetries from "./fetchWithRetries";
 
-export const GRAPHQL_URL = "http://localhost:5000/graphql";
+export const GRAPHQL_URL = "http://localhost:5001/graphql";
 
 export const TOKEN_KEY = "token";
 
