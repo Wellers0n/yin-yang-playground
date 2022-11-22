@@ -7,6 +7,7 @@
   "scripts": {
     "start": "npm run clear && webpack --env dev",
     "clear": "rimraf ./dist",
+    "build": "esbuild src/index.js --bundle --platform=node --target=node18.12.1 --outfile=dist/index.js",
     "tslint": "tslint --project .",
     "test": "jest",
     "test:watch": "jest --watchAll --coverage"
@@ -97,7 +98,7 @@
     "koa-json": "^2.0.2",
     "koa-logger": "^3.2.1",
     "koa-router": "^10.0.0",
-    "mongoose": "^5.12.14",
+    "mongoose": "^6.7.2",
     "node-fetch": "^2.6.1",
     "pretty-error": "^3.0.4",
     "regenerator-runtime": "^0.13.7",
