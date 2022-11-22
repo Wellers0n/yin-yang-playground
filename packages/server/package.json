@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "npm run clear && webpack --env dev",
+    "dev": "yarn clear && yarn build && webpack --env dev",
     "clear": "rimraf ./dist",
     "build": "esbuild src/index.js --bundle --platform=node --target=node18.12.1 --outfile=dist/index.js",
     "tslint": "tslint --project .",
