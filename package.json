@@ -38,6 +38,8 @@
       "packages/client",
       "packages/server"
     ]
-    
+  },
+  "dependencies": {
+    "esbuild": "^0.15.15"
   }
 }
