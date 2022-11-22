@@ -10,10 +10,6 @@ export default function connectDatabase() {
 
     mongoose.connect(
       "mongodb://localhost:27017/yin-yang",
-      {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-      }
     );
   });
 }
